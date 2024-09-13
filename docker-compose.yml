@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db_postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db_postgres:5432/san_giorgio
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+  db_postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: san_giorgio
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data/postgres:/var/lib/db_postgresql/data
+      - ./db/:/docker-entrypoint-initdb.d/
+
+volumes:
+  postgres-data:
