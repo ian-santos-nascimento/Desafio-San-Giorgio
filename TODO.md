@@ -1,0 +1,4 @@
+- Realizer Thread à parte para processar fila SQS
+- Exceção caso exista algum erro no envio da fila (Explicar que pode ser colocada novamente na fila para processamento)
+- Criar tabela intermediária para deduzir o valor total da cobrança de acordo com o pagamento e fazer a comparação com a tabela intermediária
+- Salvar o pagamento  no BD
